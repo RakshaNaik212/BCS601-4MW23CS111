@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HCF & LCM Calculator</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: #4facfe;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #007bff;
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #222;
+            background: #f1f9ff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="card">
+    <h2>✨ HCF & LCM Calculator</h2>
+    <p>Numbers: <b>18</b> and <b>12</b></p>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+    function hcf(a, b) {
+        while (b != 0) {
+            let temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    function lcm(a, b) {
+        return (a * b) / hcf(a, b);
+    }
+
+    function calculate() {
+        let num1 = 18;
+        let num2 = 12;
+
+        let h = hcf(num1, num2);
+        let l = lcm(num1, num2);
+
+        document.getElementById("result").innerHTML =
+            "✅ HCF = <b>" + h + "</b><br>✅ LCM = <b>" + l + "</b>";
+    }
+</script>
+
+</body>
+</html>
